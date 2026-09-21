@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBC Design Playbook 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-01: #990024;
+            --brand-02: #CC143F;
+            --brand-03: #FF003C;
+            --dark-3: #2B2E33;
+            --dark-2: #565B66;
+            --dark-1: #6B768A;
+            --mid-grey: #D6D6D6;
+            --light-3: #EFEFEF;
+            --light-2: #F5F5F5;
+            --light-1: #F9F9F9;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--dark-3);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 24px 0;
+            border-bottom: 1px solid var(--light-3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-content {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-3);
+        }
+
+        .header-title p {
+            font-size: 14px;
+            color: var(--dark-1);
+            margin-top: 4px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            left: 0;
+            top: 89px;
+            width: 280px;
+            height: calc(100vh - 89px);
+            background: var(--light-1);
+            border-right: 1px solid var(--light-3);
+            padding: 32px 24px;
+            overflow-y: auto;
+            z-index: 50;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin-bottom: 8px;
+        }
+
+        nav a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--dark-2);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background: var(--white);
+            color: var(--brand-02);
+        }
+
+        nav a.active {
+            background: var(--brand-01);
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 280px;
+            padding: 48px;
+            max-width: 1200px;
+        }
+
+        section {
+            margin-bottom: 96px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-3);
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--brand-03);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-3);
+            margin: 32px 0 16px 0;
+        }
+
+        h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark-3);
+            margin: 24px 0 12px 0;
+        }
+
+        p {
+            font-size: 16px;
+            color: var(--dark-2);
+            margin-bottom: 16px;
+        }
+
+        /* Intro Card */
+        .intro-card {
+            background: linear-gradient(135deg, var(--brand-01), var(--brand-03));
+            padding: 48px;
+            border-radius: 8px;
+            color: var(--white);
+            margin-bottom: 48px;
+        }
+
+        .intro-card h2 {
+            color: var(--white);
+            border-bottom: 2px solid var(--white);
+            margin-bottom: 24px;
+        }
+
+        .intro-card p {
+            color: var(--white);
+            font-size: 18px;
+        }
+
+        /* Keywords */
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .keyword {
+            background: var(--light-2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--dark-2);
+            font-weight: 500;
+        }
+
+        /* Icon Grid */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+
+        .icon-item {
+            text-align: center;
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 0 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .icon-wrapper img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .icon-label {
+            font-size: 12px;
+            color: var(--dark-2);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin: 32px 0;
+        }
+
+        .card {
+            background: var(--light-1);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--light-3);
+        }
+
+        .card h4 {
+            color: var(--brand-02);
+            margin-top: 0;
+        }
+
+        /* Example Box */
+        .example-box {
+            background: var(--light-2);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            border-left: 4px solid var(--brand-02);
+        }
+
+        .example-box h4 {
+            margin-top: 0;
+        }
+
+        .example-item {
+            margin: 16px 0;
+        }
+
+        .example-item.correct {
+            color: #008542;
+        }
+
+        .example-item.incorrect {
+            color: #CC2200;
+        }
+
+        .example-item strong {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Manifesto */
+        .manifesto {
+            background: var(--dark-3);
+            color: var(--white);
+            padding: 48px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 32px 0;
+        }
+
+        .manifesto p {
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+
+        /* Slogan */
+        .slogan {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--brand-02);
+            padding: 48px 0;
+            font-style: italic;
+        }
+
+        /* Logo Timeline */
+        .logo-timeline {
+            margin: 32px 0;
+        }
+
+        .logo-timeline-old {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .logo-item {
+            text-align: center;
+            padding: 24px;
+            background: var(--light-1);
+            border-radius: 8px;
+            border: 1px solid var(--light-3);
+        }
+
+        .logo-item img {
+            width: 100%;
+            max-width: 120px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 16px;
+        }
+
+        .logo-item h4 {
+            margin: 16px 0 8px 0;
+            font-size: 14px;
+            color: var(--brand-02);
+        }
+
+        .logo-item p {
+            font-size: 14px;
+            color: var(--dark-1);
+        }
+
+        /* Novo Logo Destaque */
+        .logo-new-highlight {
+            margin-top: 48px;
+        }
+
+        .logo-new-highlight h3 {
+            font-size: 24px;
+            color: var(--brand-02);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .logo-new-box {
+            background: #F9F9F9;
+            padding: 96px 64px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+        }
+
+        .logo-new-box img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        .logo-new-highlight p {
+            font-size: 16px;
+            color: var(--dark-2);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Logo Variations */
+        .logo-variations {
+            margin-top: 64px;
+        }
+
+        .logo-variations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .logo-variation-item {
+            position: relative;
+            border-radius: 16px;
+            padding: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            border: 1px solid var(--light-3);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-variation-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo-variation-item.white {
+            background: var(--white);
+        }
+
+        .logo-variation-item.brand {
+            background: var(--brand-01);
+        }
+
+        .logo-variation-item img {
+            max-width: 80%;
+            max-height: 144px;
+            height: auto;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-variation-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(43, 46, 51, 0.95);
+            color: var(--white);
+            padding: 16px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-variation-item:hover .logo-variation-label {
+            transform: translateY(0);
+        }
+
+        /* Typography Sample */
+        .typography-sample {
+            background: var(--light-1);
+            padding: 48px;
+            border-radius: 8px;
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .typography-sample .alphabet {
+            font-size: 28px;
+            letter-spacing: 4px;
+            margin: 16px 0;
+            font-weight: 400;
+        }
+
+        .typography-sample .numbers {
+            font-size: 32px;
+            letter-spacing: 8px;
+            margin: 16px 0;
+            font-weight: 700;
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .color-item {
+            text-align: center;
+        }
+
+        .color-swatch {
+            height: 100px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid var(--light-3);
+        }
+
+        .color-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark-3);
+            margin-bottom: 4px;
+        }
+
+        .color-hex {
+            font-size: 12px;
+            color: var(--dark-1);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Accordion */
+        .accordion {
+            margin: 32px 0;
+        }
+
+        .accordion-item {
+            background: var(--white);
+            border: 1px solid var(--light-3);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--light-1);
+            transition: background 0.2s ease;
+        }
+
+        .accordion-header:hover {
+            background: var(--light-2);
+        }
+
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .accordion-icon {
+            font-size: 24px;
+            color: var(--brand-02);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 2000px;
+        }
+
+        .accordion-body {
+            padding: 24px;
+        }
+
+        .accordion-body ul {
+            margin-left: 24px;
+            margin-top: 16px;
+        }
+
+        .accordion-body li {
+            margin-bottom: 8px;
+            color: var(--dark-2);
+        }
+
+        /* Applications Grid */
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .application-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 444 / 650;
+            background: var(--light-2);
+        }
+
+        .application-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .application-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Info Icon & Popup */
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--brand-02);
+            color: var(--white);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            margin-left: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .info-icon:hover {
+            background: var(--brand-03);
+            transform: scale(1.1);
+        }
+
+        /* Popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup-content {
+            background: var(--white);
+            padding: 48px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: popupSlideIn 0.3s ease;
+        }
+
+        @keyframes popupSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            background: var(--light-2);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--dark-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .popup-close:hover {
+            background: var(--brand-02);
+            color: var(--white);
+        }
+
+        .popup-content h3 {
+            margin-top: 0;
+            color: var(--brand-02);
+        }
+
+        .popup-content img {
+            width: 100%;
+            margin: 24px 0;
+            border-radius: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            nav.mobile-open {
+                transform: translateX(0);
+            }
+
+            main {
+                margin-left: 0;
+                padding: 32px 24px;
+            }
+
+            .grid-3, .logo-timeline-old {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                padding: 0 24px;
+            }
+
+            .logo-new-highlight {
+                padding: 32px 24px;
+            }
+
+            .logo-new-box {
+                padding: 64px 32px;
+            }
+
+            .logo-variations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-variation-item {
+                min-height: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 24px;
+            }
+
+            .intro-card {
+                padding: 32px 24px;
+            }
+
+            .popup-content {
+                padding: 32px 24px;
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            background: var(--light-2);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--dark-3);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            background: var(--brand-02);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            background: var(--brand-03);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="header-title">
+                <h1>JBC Design Playbook</h1>
+                <p>Versão 1.0 — 2026</p>
+            </div>
+        </div>
+    </header>
+
+    <nav id="sideNav">
+        <ul>
+            <li><a href="#introducao" class="nav-link">Introdução</a></li>
+            <li><a href="#voz-marca" class="nav-link">Voz da marca</a></li>
+            <li><a href="#arquetipo" class="nav-link">Arquétipo</a></li>
+            <li><a href="#manifesto" class="nav-link">Manifesto</a></li>
+            <li><a href="#slogan" class="nav-link">Slogan</a></li>
+            <li><a href="#logotipo" class="nav-link">Logotipo</a></li>
+            <li><a href="#aplicacoes" class="nav-link">Marca aplicada</a></li>
+            <li><a href="#tipografia" class="nav-link">Tipografia de apoio</a></li>
+            <li><a href="#cores" class="nav-link">Cores</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="introducao">
+            <div class="intro-card">
+                <h2>Sobre este documento</h2>
+                <p>Este documento é um guia rápido de marca da JBC. Ele unifica diretrizes visuais e estratégicas para criar consistência, clareza e impacto em todas as comunicações e aplicações da marca.</p>
+            </div>
+
+            <h2 style="border-bottom: none; display: block;">Solicitação (debriefing)</h2>
+            <p>A solicitação de rebranding (reformulação de marca) trouxe diretrizes que marcassem presença com <strong>sofisticação</strong>, que inspirasse <strong>confiança</strong> e que valorizasse a <strong>comunicação simplificada</strong>.</p>
+            
+            <h3>Palavras-chave para guiar as decisões de design:</h3>
+            <div class="keywords">
+                <span class="keyword">Sério</span>
+                <span class="keyword">Intenso</span>
+                <span class="keyword">Exclusivo</span>
+                <span class="keyword">Ousado</span>
+                <span class="keyword">Chic</span>
+                <span class="keyword">Clean</span>
+                <span class="keyword">Tecnológico</span>
+            </div>
+            <p style="font-size: 14px; color: var(--dark-1); font-style: italic; margin-top: 8px;">* Tecnológico no sentido de estar preparado para o futuro.</p>
+
+            <h2 style="border-bottom: none; display: block; margin-top: 64px;">Como foi construído?</h2>
+            <p>O rebranding da JBC reflete uma contabilidade preparada para o futuro, preservando a confiança construída ao longo de mais de três décadas. O logotipo se inspira nas versões anteriores da marca, reforçando sua história e evolução enquanto mantém traços e a cor principal da marca (vinho), e, junto a isso, a nova identidade verbal propõe para a marca:</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-autoridade.svg" alt="Autoridade">
+                    </div>
+                    <h4>Reforçar autoridade</h4>
+                    <p>Com uma estética séria, clean e contemporânea.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-aproximacao.svg" alt="Aproximação">
+                    </div>
+                    <h4>Aproximar público</h4>
+                    <p>Por meio de uma comunicação clara e acessível, alinhada às necessidades de clientes que valorizam confiança e praticidade.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-competitividade.svg" alt="Competitividade">
+                    </div>
+                    <h4>Projetar competitividade</h4>
+                    <p>Posicionando a marca como um parceiro estratégico para os clientes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="voz-marca">
+            <h2>Voz <span class="info-icon" data-popup="popup-voz">?</span></h2>
+            <p>A voz da JBC é confiável, acessível e profissional. Falamos com clareza, evitando jargões técnicos excessivos, e sempre buscamos transmitir segurança e proximidade. Somos um parceiro estratégico que entende as dores do cliente e oferece soluções práticas.</p>
+
+            <h2 style="border-bottom: none; display: block; margin-top: 64px;">Tom</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-formal-acolhedor.svg" alt="Formal mas acolhedor">
+                    </div>
+                    <h4>Formal, mas acolhedor</h4>
+                    <p>Usamos uma linguagem educada, mas não engessada, que reflete nossa expertise sem intimidar.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-claro-didatico.svg" alt="Claro e didático">
+                    </div>
+                    <h4>Claro e didático</h4>
+                    <p>Explicamos conceitos contábeis de forma simples, garantindo que o cliente entenda sem esforço.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-confiante-proativo.svg" alt="Confiante e proativo">
+                    </div>
+                    <h4>Confiante e proativo</h4>
+                    <p>Demonstramos autoridade ao propor soluções e antecipar necessidades, reforçando nossa experiência de 34 anos.</p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Exemplo:</h4>
+                <p><strong>Cliente:</strong> "Quero saber quanto custa contratar vocês para minha contabilidade."</p>
+                
+                <div class="example-item correct">
+                    <strong>✓ Certo</strong>
+                    <p>Olá! Agradecemos o interesse. Vamos preparar uma proposta clara e personalizada para o seu negócio. Pode nos passar alguns detalhes para começarmos?</p>
+                </div>
+                
+                <div class="example-item incorrect">
+                    <strong>✗ Errado</strong>
+                    <p>Os valores dependem dos serviços. Envie seus dados e aguardamos a formalização.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="arquetipo">
+            <h2>Arquétipo <span class="info-icon" data-popup="popup-arquetipo">?</span></h2>
+            <h3>O Sábio</h3>
+            <p>O arquétipo define a personalidade da marca, guiando sua conexão emocional com o público. O arquétipo escolhido é <strong>O Sábio</strong>.</p>
+            <p><strong>Explicação:</strong> O Sábio busca conhecimento e clareza, compartilhando sabedoria para empoderar os outros. Para a JBC, isso significa:</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-expertise.svg" alt="Expertise">
+                    </div>
+                    <h4>Expertise</h4>
+                    <p>Mais de três décadas de experiência, adaptando-se às mudanças do setor contábil.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-clareza.svg" alt="Clareza">
+                    </div>
+                    <h4>Clareza</h4>
+                    <p>Descomplicamos processos, transformando números em estratégias acessíveis.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-wrapper" style="margin-bottom: 16px;">
+                        <img src="icons/icon-confiabilidade.svg" alt="Confiabilidade">
+                    </div>
+                    <h4>Confiabilidade</h4>
+                    <p>Somos o parceiro confiável que cuida de informações sigilosas com responsabilidade.</p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Aplicação:</h4>
+                <p>A comunicação deve transmitir sabedoria e confiança, com mensagens que educam e tranquilizam.</p>
+                <p><em>Exemplo: "Com a JBC, sua contabilidade ganha clareza hoje e confiança para o futuro."</em></p>
+            </div>
+        </section>
+
+        <section id="manifesto">
+            <h2>Manifesto</h2>
+            <div class="manifesto">
+                <p>Na JBC, descomplicamos a contabilidade, transformando-a em uma vantagem competitiva.</p>
+                <p>Há mais de três décadas, somos o parceiro que converte números em estratégias e obrigações em oportunidades.</p>
+                <p>Com soluções práticas e confiáveis, cuidamos do essencial para que você foque no futuro do seu negócio.</p>
+            </div>
+        </section>
+
+        <section id="slogan">
+            <h2>Slogan</h2>
+            <div class="slogan">
+                "Clareza hoje, confiança no futuro."
+            </div>
+        </section>
+
+        <section id="logotipo">
+            <h2>Logotipo</h2>
+            <div class="logo-timeline">
+                <div class="logo-timeline-old">
+                    <div class="logo-item">
+                        <img src="images/logo-anos-90.jpg" alt="Logo Anos 1990">
+                        <h4>Anos 1990</h4>
+                        <p>A 1ª versão do logotipo surge com o vinho trazendo confiabilidade e na forma robusta solidez.</p>
+                    </div>
+                    <div class="logo-item">
+                        <img src="images/logo-anos-2000.jpg" alt="Logo Anos 2000">
+                        <h4>Anos 2000</h4>
+                        <p>A 2ª versão da marca foi um ajuste fino para deixar o logotipo mais leve e contemporâneo.</p>
+                    </div>
+                    <div class="logo-item">
+                        <img src="images/logo-anos-2010.jpg" alt="Logo Anos 2010">
+                        <h4>Anos 2010</h4>
+                        <p>A 3ª versão agregou traços arredondados para tornar a personalidade mais carismática e jovial.</p>
+                    </div>
+                </div>
+
+                <div class="logo-new-highlight">
+                    <h3>Novo Logotipo</h3>
+                    <div class="logo-new-box">
+                        <img src="images/logo-novo.svg" alt="Novo Logotipo JBC">
+                    </div>
+                    <p>A versão atual equilibra modernidade e tradição, mantendo a essência da marca enquanto projeta uma identidade preparada para o futuro.</p>
+                </div>
+
+                <div class="logo-variations">
+                    <h3>Variações do logotipo</h3>
+                    <div class="logo-variations-grid">
+                        <div class="logo-variation-item white">
+                            <img src="images/logo-variacao-vertical-colorida.svg" alt="Logo vertical positivo">
+                            <div class="logo-variation-label">Versão: Vertical Positivo</div>
+                        </div>
+                        <div class="logo-variation-item brand">
+                            <img src="images/logo-variacao-vertical-branca.svg" alt="Logo vertical negativo">
+                            <div class="logo-variation-label">Versão: Vertical Negativo</div>
+                        </div>
+                        <div class="logo-variation-item white">
+                            <img src="images/logo-variacao-horizontal-colorida.svg" alt="Logo horizontal positivo">
+                            <div class="logo-variation-label">Versão: Horizontal Positivo</div>
+                        </div>
+                        <div class="logo-variation-item brand">
+                            <img src="images/logo-variacao-horizontal-branca.svg" alt="Logo horizontal negativo">
+                            <div class="logo-variation-label">Versão: Horizontal Negativo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="aplicacoes">
+            <h2>Marca aplicada</h2>
+            <p>Esta seção apresenta a identidade visual da JBC em diferentes contextos. As aplicações mostradas são exemplos de como a marca pode ganhar vida em materiais diversos.</p>
+            
+            <h3>Orientações para desenvolvimento</h3>
+            <p>Ao desenvolver materiais ou ambientes para a JBC, considerem a voz confiável e acessível, o manifesto que descomplica a contabilidade, o arquétipo do Sábio e a estética clean e sofisticada da identidade visual.</p>
+            
+            <h4>Alguns materiais que combinam com essa linguagem:</h4>
+            <ul style="margin-left: 24px; margin-top: 16px;">
+                <li style="margin-bottom: 8px; color: var(--dark-2);">Sinalização em acrílico ou metal escovado</li>
+                <li style="margin-bottom: 8px; color: var(--dark-2);">Papelaria premium (cartões com verniz localizado, pastas em couro sintético)</li>
+                <li style="margin-bottom: 8px; color: var(--dark-2);">Blocos de anotação minimalistas</li>
+                <li style="margin-bottom: 8px; color: var(--dark-2);">Adesivos de parede em vinil recortado</li>
+                <li style="margin-bottom: 8px; color: var(--dark-2);">Objetos de mesa em tons neutros e materiais nobres</li>
+            </ul>
+            
+            <p style="margin-top: 16px;"><strong>Para arquitetos e designers de interiores:</strong> Sintam-se livres para propor outras aplicações que conversem com a seriedade, clareza e confiança que a marca transmite.</p>
+
+            <h3 style="margin-top: 48px;">Galeria de aplicações</h3>
+            <div class="applications-grid">
+                <div class="application-item">
+                    <img src="images/aplicacao-01.jpg" alt="Aplicação 1">
+                </div>
+                <div class="application-item">
+                    <img src="images/aplicacao-02.jpg" alt="Aplicação 2">
+                </div>
+                <div class="application-item">
+                    <img src="images/aplicacao-03.jpg" alt="Aplicação 3">
+                </div>
+                <div class="application-item">
+                    <img src="images/aplicacao-04.jpg" alt="Aplicação 4">
+                </div>
+                <div class="application-item">
+                    <img src="images/aplicacao-06.jpg" alt="Aplicação 6">
+                </div>
+                <div class="application-item">
+                    <img src="images/aplicacao-07.jpg" alt="Aplicação 7">
+                </div>
+            </div>
+        </section>
+
+        <section id="tipografia">
+            <h2>Tipografia de apoio</h2>
+            <h3>Lato — Google Fonts</h3>
+            
+            <div class="typography-sample">
+                <div class="alphabet">a b c d e f g h i j k l m n o p q r s t u v x z</div>
+                <div class="alphabet" style="text-transform: uppercase;">A B C D E F G H I J K L M N O P Q R S T U V X Z</div>
+                <div class="numbers">1 2 3 4 5 6 7 8 9 0</div>
+            </div>
+
+            <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px;">
+                <div class="card">
+                    <h4>Uso institucional e digital</h4>
+                    <p>A fonte Lato deve ser utilizada em todos os materiais de comunicação externa, sites institucionais e peças publicitárias. Ela garante a consistência visual da marca e reforça a identidade contemporânea da JBC.</p>
+                </div>
+                <div class="card">
+                    <h4>Uso interno e operacional</h4>
+                    <p>Para documentos formais, contratos e comunicações internas que exigem produtividade, é permitida a substituição por Arial. Essa flexibilidade facilita a aplicação no dia a dia sem comprometer a legibilidade ou a acessibilidade dos arquivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cores">
+            <h2>Cores</h2>
+            
+            <h3>Cores principais de marca</h3>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #990024;"></div>
+                    <div class="color-name">Brand 01</div>
+                    <div class="color-hex">HEX #990024</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #CC143F;"></div>
+                    <div class="color-name">Brand 02</div>
+                    <div class="color-hex">HEX #CC143F</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #FF003C;"></div>
+                    <div class="color-name">Brand 03</div>
+                    <div class="color-hex">HEX #FF003C</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: linear-gradient(135deg, #990024, #FF003C);"></div>
+                    <div class="color-name">Gradient</div>
+                    <div class="color-hex">Brand 01 → Brand 03</div>
+                </div>
+            </div>
+
+            <h3>Escala de cinza</h3>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #2B2E33;"></div>
+                    <div class="color-name">Dark 3</div>
+                    <div class="color-hex">HEX #2B2E33</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #565B66;"></div>
+                    <div class="color-name">Dark 2</div>
+                    <div class="color-hex">HEX #565B66</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #6B768A;"></div>
+                    <div class="color-name">Dark 1</div>
+                    <div class="color-hex">HEX #6B768A</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #D6D6D6;"></div>
+                    <div class="color-name">Mid Grey</div>
+                    <div class="color-hex">HEX #D6D6D6</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #EFEFEF;"></div>
+                    <div class="color-name">Light 3</div>
+                    <div class="color-hex">HEX #EFEFEF</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #F5F5F5;"></div>
+                    <div class="color-name">Light 2</div>
+                    <div class="color-hex">HEX #F5F5F5</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #F9F9F9;"></div>
+                    <div class="color-name">Light 1</div>
+                    <div class="color-hex">HEX #F9F9F9</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #FFFFFF; border: 2px solid #D6D6D6;"></div>
+                    <div class="color-name">White</div>
+                    <div class="color-hex">HEX #FFFFFF</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 48px;">Cores secundárias (gráficos e visualização de dados)</h3>
+            
+            <h4>Série G (Azuis)</h4>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #1F4C8F;"></div>
+                    <div class="color-name">G1</div>
+                    <div class="color-hex">HEX #1F4C8F</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #3E609F;"></div>
+                    <div class="color-name">G2</div>
+                    <div class="color-hex">HEX #3E609F</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #5A76B0;"></div>
+                    <div class="color-name">G3</div>
+                    <div class="color-hex">HEX #5A76B0</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #7B94C2;"></div>
+                    <div class="color-name">G4</div>
+                    <div class="color-hex">HEX #7B94C2</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #A1B4D4;"></div>
+                    <div class="color-name">G5</div>
+                    <div class="color-hex">HEX #A1B4D4</div>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 32px;">Série GS (Vermelhos)</h4>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #8F1F39;"></div>
+                    <div class="color-name">GS1</div>
+                    <div class="color-hex">HEX #8F1F39</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #9F3E55;"></div>
+                    <div class="color-name">GS2</div>
+                    <div class="color-hex">HEX #9F3E55</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #B05A6E;"></div>
+                    <div class="color-name">GS3</div>
+                    <div class="color-hex">HEX #B05A6E</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #C27B8C;"></div>
+                    <div class="color-name">GS4</div>
+                    <div class="color-hex">HEX #C27B8C</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #D4A1AD;"></div>
+                    <div class="color-name">GS5</div>
+                    <div class="color-hex">HEX #D4A1AD</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 48px;">Cores de semântica</h3>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #008542;"></div>
+                    <div class="color-name">Positive</div>
+                    <div class="color-hex">HEX #008542</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #E58A00;"></div>
+                    <div class="color-name">Warning</div>
+                    <div class="color-hex">HEX #E58A00</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #CC2200;"></div>
+                    <div class="color-name">Negative</div>
+                    <div class="color-hex">HEX #CC2200</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #295FCC;"></div>
+                    <div class="color-name">Information</div>
+                    <div class="color-hex">HEX #295FCC</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Popup Voz -->
+    <div class="popup-overlay" id="popup-voz">
+        <div class="popup-content">
+            <button class="popup-close">×</button>
+            <h3>Diferença entre voz e tom de voz</h3>
+            <h4>Voz da Marca</h4>
+            <p>A voz da marca é a personalidade fixa da marca — o "quem" ela é — independentemente do canal ou público. É constante e reflete os valores e a missão da marca.</p>
+            <h4>Tom de Voz</h4>
+            <p>Por outro lado, o tom de voz é como a voz se adapta a diferentes situações, canais ou públicos, considerando o contexto da comunicação. É flexível, mas permanece fiel à voz central da marca.</p>
+        </div>
+    </div>
+
+    <!-- Popup Arquétipo -->
+    <div class="popup-overlay" id="popup-arquetipo">
+        <div class="popup-content">
+            <button class="popup-close">×</button>
+            <h3>Arquétipos</h3>
+            <img src="images/archetypes.png" alt="Roda dos arquétipos">
+            <h4>Conceito</h4>
+            <p>Arquétipos ajudam a moldar a personalidade de uma marca, criando uma conexão emocional com o público.</p>
+            <h4>Exemplos de marcas com o arquétipo "O Sábio"</h4>
+            <p>Harvard University, National Geographic, CNN</p>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script>
+        // Smooth scroll with offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 100; // Offset para compensar o header fixo
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active navigation
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Accordion
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Popup
+        document.querySelectorAll('.info-icon').forEach(icon => {
+            icon.addEventListener('click', () => {
+                const popupId = icon.getAttribute('data-popup');
+                const popup = document.getElementById(popupId);
+                if (popup) {
+                    popup.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        document.querySelectorAll('.popup-close, .popup-overlay').forEach(element => {
+            element.addEventListener('click', (e) => {
+                if (e.target === element) {
+                    element.closest('.popup-overlay').classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sideNav = document.getElementById('sideNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            sideNav.classList.toggle('mobile-open');
+        });
+
+        // Close mobile menu on link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sideNav.classList.remove('mobile-open');
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

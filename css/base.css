@@ -1,0 +1,129 @@
+/* ==========================================================================
+   JBC — Base
+   Reset, design tokens e fundamentos tipográficos.
+   Os tokens seguem o JBC Design Playbook 2026 (ver /design).
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* --- Cores de marca (Design Playbook) --- */
+    --brand-01: #990024;
+    --brand-02: #CC143F;
+    --brand-03: #FF003C;
+    --brand-01-dark: #7A001C; /* apoio: fundo de gradiente das seções de marca */
+
+    /* --- Escala de cinza (Design Playbook) --- */
+    --dark-3: #2B2E33;
+    --dark-2: #565B66;
+    --dark-1: #6B768A;
+    --mid-grey: #D6D6D6;
+    --light-3: #EFEFEF;
+    --light-2: #F5F5F5;
+    --light-1: #F9F9F9;
+    --white: #FFFFFF;
+
+    /* --- Aliases semânticos usados pelos componentes --- */
+    --brand-primary: var(--brand-01);
+    --brand-secondary: var(--brand-02);
+    --dark: var(--dark-3);
+    --gray: var(--dark-2);
+    --light-gray: var(--light-2);
+    --border: var(--light-3);
+
+    /* --- Layout --- */
+    --nav-height: 72px;
+    --container-max: 1200px;
+    --container-gutter: 40px;
+    --radius: 8px;
+    --radius-lg: 12px;
+
+    /* --- Movimento --- */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --reveal-duration: 1.4s;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* impede que âncoras fiquem escondidas sob o header fixo */
+    scroll-padding-top: var(--nav-height);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Acessibilidade
+   -------------------------------------------------------------------------- */
+
+/* Visível apenas para leitores de tela */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Atalho "Pular para o conteúdo" */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 1100;
+    padding: 12px 20px;
+    background: var(--brand-primary);
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Foco visível e consistente em toda a navegação por teclado */
+:focus-visible {
+    outline: 3px solid var(--brand-02);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Respeita quem pediu menos movimento no sistema operacional */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

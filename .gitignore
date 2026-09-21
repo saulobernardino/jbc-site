@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+._*
+
+# Planejamento estratégico — material interno, não vai para o repositório
+estrategia/

@@ -1,0 +1,337 @@
+/* ==========================================================================
+   JBC — Componentes
+   Botões, cabeçalhos de seção, hero, CTA e animações de entrada.
+
+   NOTA: antes da refatoração, .btn-primary estava definido três vezes com
+   três aparências diferentes (vermelho na home, branco em serviços,
+   vermelho com outra sombra no FAQ). Agora existe uma definição só, com
+   uma variante explícita para fundos escuros.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Botões
+   -------------------------------------------------------------------------- */
+
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.4;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease,
+                transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--brand-primary);
+    color: var(--white);
+    border: 1px solid var(--brand-primary);
+}
+
+.btn-primary:hover {
+    background: var(--brand-secondary);
+    border-color: var(--brand-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(153, 0, 36, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--dark);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--mid-grey);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Variante para uso sobre fundos escuros / de marca */
+.btn-primary--inverse {
+    background: var(--white);
+    color: var(--brand-primary);
+    border-color: var(--white);
+}
+
+.btn-primary--inverse:hover {
+    background: var(--light-2);
+    color: var(--brand-primary);
+    border-color: var(--light-2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Cabeçalho de seção
+   -------------------------------------------------------------------------- */
+
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.section-header p {
+    font-size: 16px;
+    color: var(--gray);
+}
+
+/* Cabeçalho sobre fundo de marca */
+.section--brand .section-header h2 {
+    color: var(--white);
+}
+
+.section--brand .section-header p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Hero (base das páginas internas)
+   -------------------------------------------------------------------------- */
+
+.hero {
+    margin-top: var(--nav-height);
+    padding: 80px 0 60px;
+    background: var(--white);
+    text-align: center;
+}
+
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--container-gutter);
+}
+
+.hero-container h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--dark);
+}
+
+.hero-container > p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--gray);
+}
+
+/* --------------------------------------------------------------------------
+   Seção de marca (fundo vermelho + imagem)
+   Usada na CTA da home/serviços e nos números da página Sobre.
+   -------------------------------------------------------------------------- */
+
+.section--brand {
+    background: linear-gradient(135deg, var(--brand-01) 0%, var(--brand-01-dark) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.section--brand::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/cta-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.section--brand > .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   CTA
+   -------------------------------------------------------------------------- */
+
+.cta-section {
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 32px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CTA clara (FAQ) */
+.cta-section:not(.section--brand) h2 {
+    color: var(--dark);
+}
+
+.cta-section:not(.section--brand) p {
+    color: var(--gray);
+}
+
+/* CTA sobre fundo de marca */
+.cta-section.section--brand {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.cta-section.section--brand h2 {
+    color: var(--white);
+}
+
+.cta-section.section--brand p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* --------------------------------------------------------------------------
+   Acordeão (FAQ e Links úteis)
+
+   O gatilho é um <button> real: recebe foco, abre com Enter/Espaço e informa
+   o estado via aria-expanded. Antes era uma <div> com listener de clique.
+   -------------------------------------------------------------------------- */
+
+.accordion-item {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.accordion-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.accordion-trigger:hover {
+    background: var(--light-gray);
+}
+
+.accordion-trigger h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+    margin: 0;
+}
+
+.accordion-icon {
+    font-size: 20px;
+    color: var(--brand-primary);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* A altura é definida em pixels pelo JS (js/accordion.js).
+   A técnica de animar grid-template-rows de 0fr para 1fr é mais elegante,
+   mas não anima de forma confiável em todos os navegadores — o painel
+   simplesmente ficava travado em 0px. */
+.accordion-panel {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s var(--ease-out);
+}
+
+.accordion-content {
+    padding: 4px 28px 24px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray);
+}
+
+/* --------------------------------------------------------------------------
+   Animações de entrada
+
+   As regras ficam sob .js para que, se o JavaScript não carregar, o conteúdo
+   apareça normalmente em vez de ficar invisível (opacity: 0) para sempre.
+   -------------------------------------------------------------------------- */
+
+.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity var(--reveal-duration) var(--ease-out),
+                transform var(--reveal-duration) var(--ease-out);
+}
+
+.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Escalonamento: filhos de uma grade entram em cascata */
+.js [data-reveal-stagger] > *:nth-child(1) { transition-delay: 0.1s; }
+.js [data-reveal-stagger] > *:nth-child(2) { transition-delay: 0.2s; }
+.js [data-reveal-stagger] > *:nth-child(3) { transition-delay: 0.3s; }
+.js [data-reveal-stagger] > *:nth-child(4) { transition-delay: 0.4s; }
+.js [data-reveal-stagger] > *:nth-child(5) { transition-delay: 0.5s; }
+.js [data-reveal-stagger] > *:nth-child(6) { transition-delay: 0.6s; }
+
+/* --------------------------------------------------------------------------
+   Responsivo
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 48px 0 40px;
+    }
+
+    .hero-container h1 {
+        font-size: 32px;
+    }
+
+    .hero-container > p {
+        font-size: 16px;
+    }
+
+    .section-header {
+        margin-bottom: 32px;
+    }
+
+    .section-header h2,
+    .cta-section h2 {
+        font-size: 26px;
+    }
+
+    .cta-section p {
+        font-size: 16px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+}

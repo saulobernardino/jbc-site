@@ -1,0 +1,303 @@
+/* ==========================================================================
+   JBC — Home
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.home-hero {
+    margin-top: var(--nav-height);
+    padding: 60px 0;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.home-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../../images/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.home-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.85) 30%,
+        rgba(255, 255, 255, 0.75) 50%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradientMove 6s ease infinite;
+    z-index: 1;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+
+.home-hero .hero-container {
+    max-width: var(--container-max);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.home-hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--dark);
+}
+
+.home-hero .hero-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray);
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Benefícios
+   -------------------------------------------------------------------------- */
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.benefit-item {
+    text-align: center;
+}
+
+.benefit-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.benefit-icon i {
+    font-size: 48px;
+    color: var(--brand-primary);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+}
+
+.benefit-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.benefit-item p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Serviços (prévia)
+   -------------------------------------------------------------------------- */
+
+.services {
+    background: var(--brand-primary);
+    position: relative;
+}
+
+/* Textura sutil sobre o vermelho */
+.services::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.services > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.services .section-header h2,
+.services .section-header p {
+    color: var(--white);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    min-height: 320px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+a.service-card:hover,
+a.service-card:focus-visible {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    transform: translateY(-4px);
+}
+
+.service-image {
+    width: 100%;
+    height: 96px;
+    background: var(--light-3);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.service-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--brand-primary);
+    color: var(--brand-primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    width: fit-content;
+}
+
+.service-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.service-description {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.5;
+}
+
+.service-link {
+    color: var(--brand-primary);
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+a.service-card:hover .service-link {
+    color: var(--brand-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Responsivo
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+    .home-hero .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .benefits-grid,
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .home-hero {
+        min-height: 0;
+        padding: 48px 0;
+    }
+
+    /* Em telas estreitas o texto ocupa toda a largura e cairia por cima da
+       parte transparente do gradiente. Aqui o véu fica quase sólido embaixo,
+       onde está o texto, e deixa a imagem aparecer só no topo. */
+    .home-hero::after {
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.55) 0%,
+            rgba(255, 255, 255, 0.92) 22%,
+            rgba(255, 255, 255, 0.97) 45%,
+            rgba(255, 255, 255, 0.97) 100%
+        );
+        background-size: auto;
+        animation: none;
+    }
+
+    .home-hero h1 {
+        font-size: 32px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .benefits-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        min-height: 0;
+    }
+}

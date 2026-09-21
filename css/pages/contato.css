@@ -1,0 +1,133 @@
+/* ==========================================================================
+   JBC — Contato
+
+   NOTA: a seção de localização foi removida em algum momento e no lugar ficou
+   um .section-spacer — um bloco cinza vazio de até 420px com clip-path,
+   margens negativas e box-shadow só para tapar o buraco. Foi retirado; no
+   lugar entrou um cartão de endereço com a informação que já existia no rodapé.
+   ========================================================================== */
+
+.contact-section {
+    background: var(--light-gray);
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+    justify-content: center;
+    gap: 24px;
+}
+
+.contact-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: var(--brand-secondary);
+}
+
+.contact-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.contact-info {
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.contact-info a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    color: var(--brand-primary);
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Botões dos cartões
+   -------------------------------------------------------------------------- */
+
+.btn-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin-top: auto;
+    transition: background 0.2s ease, color 0.2s ease,
+                transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-contact i {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.btn-whatsapp {
+    background: var(--brand-primary);
+    color: var(--white);
+    border-color: var(--brand-primary);
+}
+
+.btn-whatsapp:hover {
+    background: var(--brand-secondary);
+    border-color: var(--brand-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(153, 0, 36, 0.3);
+}
+
+.btn-copy {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--dark);
+}
+
+.btn-copy:hover {
+    border-color: var(--mid-grey);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-copy.is-copied {
+    background: var(--brand-primary);
+    color: var(--white);
+    border-color: var(--brand-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Responsivo
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+}
